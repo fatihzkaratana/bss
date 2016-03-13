@@ -110,4 +110,5 @@ target/
 *.css.map
 *.tar.gz
 
+.bowerrc
 .gitignore

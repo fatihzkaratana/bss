@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Bus Stop Crowdfunding</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            padding-top: 51px;
+            padding-bottom: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="app/assets/libs/ol/ol.css" type="text/css">
+    <link rel="stylesheet" href="app/assets/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/assets/libs/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="app/assets/css/app.css">
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Bus-stop crowdsourcing web application</a>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-sm-9 col-md-9 main no-left-padding no-right-padding">
+            <div id="popup"></div>
+            <div id="bus-stop-map" data-target="map"></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-3 col-md-3 sidebar">
+            <h3>Bus Stop Service Crowdsourcing</h3>
+            <p class="form-control-static">Current Funding</p>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="7000" style="width:0%">
+                    $0
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <p class="form-control-static">Targeted Amount per Bus Stop: <b>$ 700</b></p>
+            <p class="form-control-static">Total Targeted Amount: <b>$ 7000</b></p>
+            <div id="donate-box" style="display: none"></div>
+        </div>
+    </div>
+</div>
+<script id="tpl_donation" type="text/x-handlebars-template">
+    <h4>Donate for <span>{{name}}</span></h4>
+    <p class="form-control-static">Current Donation: <span>{{donationsRaisedInDollars}}</span></p>
+    <form class="form-inline">
+        <div class="form-group">
+            <input type="text" class="form-control" value="" name="name" id="name" placeholder="Name">
+        </div>
+        <p>&nbsp;</p>
+        <div class="form-group">
+            <input type="text" class="form-control" value="" name="email" id="email" placeholder="name@domain.com">
+        </div>
+        <p>&nbsp;</p>
+        <div class="form-group">
+            <label class="sr-only" for="donation">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" value="" name="donation" id="donation" placeholder="Amount">
+                <input type="hidden" name="stopId" value="{{stopId}}">
+                <div class="input-group-addon">.00</div>
+            </div>
+        </div>
+        <button type="submit" data-action="donate" class="btn btn-success btn-sm">Donate</button>
+    </form>
+</script>
+<!--- Load Libraries -->
+<script type="text/javascript" src="app/assets/libs/jquery/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="app/assets/libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="app/assets/libs/ol/ol.js"></script>
+<script type="text/javascript" src="app/assets/libs/handlebars/handlebars.js"></script>
+<!--- end of libs --->
+
+<script type="text/javascript" src="app/assets/js/bus-stop-service.js"></script>
+<script type="text/javascript" src="app/assets/js/app.js"></script>
+<script type="text/javascript" src="app/assets/js/init.js"></script>
+</body>
+</html>

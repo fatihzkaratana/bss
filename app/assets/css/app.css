@@ -6,3 +6,7 @@
 .no-right-padding{
     padding-right: 0;
 }
+
+.popover-title{
+    white-space: nowrap;
+}

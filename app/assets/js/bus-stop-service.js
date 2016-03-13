@@ -4,6 +4,8 @@
 'use strict';
 
 var BSS = function(){
+    this.total = 0;
+
     // Initiate the class
     this.init = function(){
         return this;
@@ -26,10 +28,56 @@ var BSS = function(){
     // Donate the stop by binding the event to the click object
     this.donate = function(sId, donation){
         // Get the stop by given stop id
-        var stop = this.getStop(sId);
+
+        try{
+            var stop = this.getStop(sId);
+            stop.donationsRaisedInDollars += parseInt(donation);
+            this.setTotal(this.getTotal() + parseInt(donation));
+            this.submit(this);
+        }catch (err){
+            console.error("Error occurred while donating. Please see error: " + err.toString());
+        }
+
+
     };
 
+    /**
+     * Find a stop object and return it to the caller
+     * @param sId
+     * @returns {T}
+     */
     this.getStop = function(sId){
+        if (isNaN(sId)) throw new Error("Stop id has not been provided");
         return this.stops.filter(function(stop){ if (stop.stopId == sId) return stop})[0];
+    };
+
+    /**
+     * Return all stops as an array already defined in BSS
+     * @returns {Array}
+     */
+    this.getAllStops = function(){
+        return this.stops;
+    };
+
+    /**
+     * Set BSS.total variable
+     * @param total
+     */
+    this.setTotal = function(total){
+        this.total = total;
+    };
+
+    /**
+     * Get BSS.total variable
+     * @returns {*}
+     */
+    this.getTotal = function(){
+        return this.total;
+    };
+
+    this.submit = function(bss){
+        $.getJSON('data/donate', function(data){
+            // get some action here after a REST backend got ready
+        });
     }
 };
